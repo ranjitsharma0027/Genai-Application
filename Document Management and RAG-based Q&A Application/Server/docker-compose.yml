@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  nestjs-backend:
+    build:
+      context: ./nestjs-backend
+    ports:
+      - "3000:3000"
+    environment:
+      PYTHON_BACKEND_URL: http://python-backend:8000
+      PYTHON_BACKEND_API_KEY: secret_key
+    depends_on:
+      - RAG
+    networks:
+      - app-network
+
+  python-backend:
+    build:
+      context: ./python-backend
+    ports:
+      - "8000:8000"
+    environment:
+      PYTHON_BACKEND_API_KEY: my_shared_secret_key
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+

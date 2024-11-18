@@ -1,0 +1,10 @@
+<div>
+    <h2>Q&A Interface</h2>
+    <form (submit)="askQuestion()">
+        <input type="text" [(ngModel)]="question" placeholder="Ask a question" />
+        <button type="submit">Ask</button>
+    </form>
+    <div *ngFor="let answer of answers">
+        <p>{{ answer }}</p>
+    </div>
+</div>

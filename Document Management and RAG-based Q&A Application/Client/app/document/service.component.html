@@ -1,0 +1,15 @@
+<div>
+    <h2>Document Management</h2>
+    <form (submit)="uploadDocument()">
+        <input type="text" [(ngModel)]="title" placeholder="Title" />
+        <textarea [(ngModel)]="content" placeholder="Content"></textarea>
+        <button type="submit">Upload</button>
+    </form>
+    <ul>
+        <li *ngFor="let doc of documents">
+            {{ doc.title }}
+            <button (click)="deleteDocument(doc.id)">Delete</button>
+        </li>
+    </ul>
+</div>
+
